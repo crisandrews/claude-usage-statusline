@@ -35,25 +35,17 @@ Opus 4.7 (1M context) · high | Session: 9% (2h 3min left) | Week: 37% (Resets T
 
 ## Install
 
-### Option A — As a plugin
+### Option A — As a plugin (recommended)
 
 ```
 /plugin marketplace add crisandrews/claude-usage-statusline
 /plugin install claude-usage-statusline@crisandrews
+/usage-statusline-setup
 ```
 
-Then add the following to your `~/.claude/settings.json`:
+The `/usage-statusline-setup` command prints the exact snippet to paste into your `~/.claude/settings.json` with the installed path already resolved. It can also edit `settings.json` for you if you confirm.
 
-```json
-{
-  "statusLine": {
-    "type": "command",
-    "command": "bash ${CLAUDE_PLUGIN_ROOT}/statusline-command.sh"
-  }
-}
-```
-
-> Claude Code plugins can't set `statusLine` automatically — that key lives in user settings only. The snippet above is the only manual step.
+> Claude Code plugins can't set `statusLine` automatically — that key lives in user settings only. The helper command is the closest thing to a one-click install.
 
 ### Option B — Manual install
 

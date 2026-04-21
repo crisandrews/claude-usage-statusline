@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-04-21
+
+### Added
+- `/usage-statusline-setup` slash command that resolves `$CLAUDE_PLUGIN_ROOT` and prints the exact `settings.json` snippet to paste, with an offer to edit `~/.claude/settings.json` automatically.
+
+### Changed
+- README install flow now points to `/usage-statusline-setup` instead of instructing users to copy `${CLAUDE_PLUGIN_ROOT}` literally (which is not expanded inside user `settings.json`).
+
 ## [1.0.0] - 2026-04-21
 
 ### Added
