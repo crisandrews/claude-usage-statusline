@@ -43,9 +43,9 @@ Opus 4.7 (1M context) · high | Session: 9% (2h 3min left) | Week: 37% (Resets T
 /usage-statusline-setup
 ```
 
-The `/usage-statusline-setup` command prints the exact snippet to paste into your `~/.claude/settings.json` with the installed path already resolved. It can also edit `settings.json` for you if you confirm.
+The last command prints a ready-to-paste `/statusline please install and use this statusline: <path>` line. Paste it back into Claude Code and Claude Code's built-in `/statusline` flow edits your `~/.claude/settings.json` for you.
 
-> Claude Code plugins can't set `statusLine` automatically — that key lives in user settings only. The helper command is the closest thing to a one-click install.
+> Claude Code plugins can't set `statusLine` automatically — that key lives in user settings only. This two-step prompt is the cleanest workaround.
 
 ### Option B — Manual install
 

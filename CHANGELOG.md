@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-04-21
+
+### Changed
+- `/usage-statusline-setup` now prints a ready-to-paste `/statusline please install and use this statusline: <path>` line, delegating the actual `settings.json` edit to Claude Code's built-in `/statusline` flow. Avoids reimplementing settings.json merging, handles quoting of paths with spaces, and aligns with Claude Code's native UX.
+
 ## [1.1.0] - 2026-04-21
 
 ### Added

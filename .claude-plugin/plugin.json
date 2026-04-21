@@ -1,6 +1,6 @@
 {
   "name": "claude-usage-statusline",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Claude Code statusline that colors rate-limit usage by consumption pace vs time elapsed, not just absolute thresholds.",
   "author": {
     "name": "Juan Cristobal Andrews",

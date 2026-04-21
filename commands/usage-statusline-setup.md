@@ -1,35 +1,22 @@
 ---
-description: Show the exact settings.json snippet to enable claude-usage-statusline
-allowed-tools: Bash(echo:*), Bash(cat:*), Read, Edit
+description: Print the exact /statusline invocation to install claude-usage-statusline
+allowed-tools: Bash(echo:*)
 ---
 
-The user just installed the `claude-usage-statusline` plugin and wants to wire it up.
+The user just installed the `claude-usage-statusline` plugin. Help them enable it by delegating to Claude Code's built-in `/statusline` flow.
 
-Do the following, in order:
+Do exactly this, nothing more:
 
-1. Run `echo "$CLAUDE_PLUGIN_ROOT"` to resolve the absolute path to this plugin on the user's machine.
+1. Run `echo "$CLAUDE_PLUGIN_ROOT"` to resolve this plugin's install path.
 
-2. Print a clear, copy-pasteable block showing exactly what they must add to `~/.claude/settings.json`, using the **resolved absolute path** (not the variable). Example format:
+2. Print — as a single fenced code block, nothing else around it — the line the user should paste next:
 
    ```
-   Add this to ~/.claude/settings.json:
-
-   {
-     "statusLine": {
-       "type": "command",
-       "command": "bash <RESOLVED_PATH>/statusline-command.sh"
-     }
-   }
+   /statusline please install and use this statusline: <RESOLVED_PATH>/statusline-command.sh
    ```
 
-   Replace `<RESOLVED_PATH>` with the actual path from step 1.
+   Replace `<RESOLVED_PATH>` with the path from step 1. If the path contains spaces, wrap the full path in double quotes inside the line.
 
-3. Tell them: after saving, restart Claude Code for the statusline to appear.
+3. Below the code block, add one short sentence: "Paste that line into Claude Code and it will wire up your settings.json for you."
 
-4. Offer — as a single follow-up question — whether you should edit `~/.claude/settings.json` for them automatically. If they say yes:
-   - Read `~/.claude/settings.json`
-   - Merge the `statusLine` key (overwriting if present)
-   - Preserve all other keys and formatting as best you can
-   - Confirm what was changed
-
-Keep the response short. No extra commentary beyond what's needed for the user to finish setup.
+No other commentary.
