@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2026-04-21
+
+### Changed
+- Hook now mirrors `statusline-command.sh` to a short, stable path `~/.claude/claude-usage-statusline.sh` on every SessionStart. The hint line now points users there instead of the versioned plugin cache path. Benefits: (1) `settings.json` doesn't break when the plugin updates (version folder changes), (2) the pasted line is short and readable, (3) users automatically get the latest script on every session without re-configuring.
+
 ## [1.3.0] - 2026-04-21
 
 ### Added

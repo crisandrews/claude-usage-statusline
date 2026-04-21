@@ -44,17 +44,19 @@ Install the plugin:
 /plugin install claude-usage-statusline@crisandrews
 ```
 
-Restart Claude Code. On the next session start, if you don't have a statusline configured yet, the plugin shows a system message with the exact line to paste:
+Restart Claude Code. On the next session start the plugin copies its script to a short, stable path (`~/.claude/claude-usage-statusline.sh`) and — if you don't have a statusline configured yet — shows a system message with the exact line to paste:
 
 ```
 claude-usage-statusline is installed but the statusline is not yet enabled.
 
 To enable it, paste this line into Claude Code:
 
-/statusline please install and use this statusline: "/Users/you/.claude/plugins/cache/.../statusline-command.sh"
+/statusline please install and use this statusline: ~/.claude/claude-usage-statusline.sh
 ```
 
-Paste that line back. Claude Code's built-in `/statusline` handler edits your `~/.claude/settings.json` with the correct absolute path.
+Paste that line back. Claude Code's built-in `/statusline` handler edits your `~/.claude/settings.json` for you.
+
+Why the short path? Plugins live in `~/.claude/plugins/cache/<marketplace>/<plugin>/<version>/`, and the version folder changes on every update, which would break `statusLine.command` after each upgrade. The plugin mirrors its script to `~/.claude/claude-usage-statusline.sh` on every session start, so your settings.json stays valid across updates and automatically picks up the latest version.
 
 If you dismissed the hint, or you already have another statusline but want to switch, run `/usage-statusline-setup` any time to get the line again.
 
