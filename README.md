@@ -37,15 +37,28 @@ Opus 4.7 (1M context) · high | Session: 9% (2h 3min left) | Week: 37% (Resets T
 
 ### Option A — As a plugin (recommended)
 
+Install the plugin:
+
 ```
 /plugin marketplace add crisandrews/claude-usage-statusline
 /plugin install claude-usage-statusline@crisandrews
-/usage-statusline-setup
 ```
 
-The last command prints a ready-to-paste `/statusline please install and use this statusline: <path>` line. Paste it back into Claude Code and Claude Code's built-in `/statusline` flow edits your `~/.claude/settings.json` for you.
+Restart Claude Code. On the next session start, if you don't have a statusline configured yet, the plugin shows a system message with the exact line to paste:
 
-> Claude Code plugins can't set `statusLine` automatically — that key lives in user settings only. This two-step prompt is the cleanest workaround.
+```
+claude-usage-statusline is installed but the statusline is not yet enabled.
+
+To enable it, paste this line into Claude Code:
+
+/statusline please install and use this statusline: "/Users/you/.claude/plugins/cache/.../statusline-command.sh"
+```
+
+Paste that line back. Claude Code's built-in `/statusline` handler edits your `~/.claude/settings.json` with the correct absolute path.
+
+If you dismissed the hint, or you already have another statusline but want to switch, run `/usage-statusline-setup` any time to get the line again.
+
+> Claude Code plugins can't set `statusLine` automatically — that key lives in user settings only. A one-time paste is as close to zero-config as the platform allows.
 
 ### Option B — Manual install
 
