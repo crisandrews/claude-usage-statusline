@@ -35,46 +35,54 @@ Opus 4.7 (1M context) · high | Session: 9% (2h 3min left) | Week: 37% (Resets T
 
 ## Install
 
-### Option A — As a plugin (recommended)
+### Option A — One-liner (recommended)
 
-Install the plugin:
+Paste this into Claude Code:
+
+```
+/statusline please install this statusline: https://raw.githubusercontent.com/crisandrews/claude-usage-statusline/main/statusline-command.sh
+```
+
+Claude Code fetches the script, saves it to `~/.claude/`, and wires up your `settings.json` in one pass. No plugin, no restart.
+
+To update later, re-run the same line.
+
+### Option B — As a plugin (auto-updates)
+
+If you'd rather have the script refreshed automatically on every session:
 
 ```
 /plugin marketplace add crisandrews/claude-usage-statusline
 /plugin install claude-usage-statusline@crisandrews
 ```
 
-Restart Claude Code. On the next session start the plugin copies its script to a short, stable path (`~/.claude/claude-usage-statusline.sh`) and — if you don't have a statusline configured yet — shows a system message with the exact line to paste:
+Restart Claude Code. On the next session start the plugin mirrors its script to `~/.claude/claude-usage-statusline.sh` and — if you don't have a statusline configured yet — shows a system message with the exact line to paste:
 
 ```
-claude-usage-statusline is installed but the statusline is not yet enabled.
-
-To enable it, paste this line into Claude Code:
-
 /statusline please install and use this statusline: ~/.claude/claude-usage-statusline.sh
 ```
 
-Paste that line back. Claude Code's built-in `/statusline` handler edits your `~/.claude/settings.json` for you.
+Paste it back. Claude Code's built-in `/statusline` handler edits your `~/.claude/settings.json` for you.
 
-Why the short path? Plugins live in `~/.claude/plugins/cache/<marketplace>/<plugin>/<version>/`, and the version folder changes on every update, which would break `statusLine.command` after each upgrade. The plugin mirrors its script to `~/.claude/claude-usage-statusline.sh` on every session start, so your settings.json stays valid across updates and automatically picks up the latest version.
+Why the mirror? Plugins live in `~/.claude/plugins/cache/<marketplace>/<plugin>/<version>/`, and the version folder changes on every update, which would break `statusLine.command` after each upgrade. The plugin writes the script to `~/.claude/claude-usage-statusline.sh` on every session start, so your settings.json stays valid across updates and automatically picks up the latest version.
 
-If you dismissed the hint, or you already have another statusline but want to switch, run `/usage-statusline-setup` any time to get the line again.
+If you dismissed the hint or already have another statusline and want to switch, run `/usage-statusline-setup` any time to get the line again.
 
 > Claude Code plugins can't set `statusLine` automatically — that key lives in user settings only. A one-time paste is as close to zero-config as the platform allows.
 
-### Option B — Manual install
+### Option C — Fully manual
 
-1. Download `statusline-command.sh` into `~/.claude/`:
+1. Download the script:
    ```sh
-   curl -o ~/.claude/statusline-command.sh https://raw.githubusercontent.com/crisandrews/claude-usage-statusline/main/statusline-command.sh
-   chmod +x ~/.claude/statusline-command.sh
+   curl -o ~/.claude/claude-usage-statusline.sh https://raw.githubusercontent.com/crisandrews/claude-usage-statusline/main/statusline-command.sh
+   chmod +x ~/.claude/claude-usage-statusline.sh
    ```
 2. Add to `~/.claude/settings.json`:
    ```json
    {
      "statusLine": {
        "type": "command",
-       "command": "bash /Users/YOUR_USER/.claude/statusline-command.sh"
+       "command": "bash ~/.claude/claude-usage-statusline.sh"
      }
    }
    ```
